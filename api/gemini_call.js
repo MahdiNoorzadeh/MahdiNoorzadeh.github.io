@@ -3,6 +3,20 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 // This function will handle incoming requests from your portfolio site
 export default async function handler(req, res) {
+  // --- CORS FIX ---
+  // Set headers to allow requests from your GitHub Pages domain
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', 'https://pujasridhar.github.io');
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight requests for CORS
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+  // --- END CORS FIX ---
+
   // Ensure this function only responds to POST requests
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
@@ -17,9 +31,7 @@ export default async function handler(req, res) {
     // Get the user's prompt and your portfolio data from the request
     const { prompt, portfolioData } = req.body;
 
-    // --- Create a detailed prompt for the AI ---
-    // This instructs the AI on its persona ("Cogsworth") and provides it with
-    // all the necessary context from your portfolio to answer questions accurately.
+    // Create a detailed prompt for the AI
     const detailedPrompt = `
       You are Cogsworth, an AI assistant for Puja Sridhar's portfolio. 
       Your personality is professional, slightly formal, and helpful, inspired by a vintage computer terminal.
