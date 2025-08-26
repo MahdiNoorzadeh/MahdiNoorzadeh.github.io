@@ -13,7 +13,6 @@
             font-family: 'Courier Prime', monospace;
             background-color: #e0d5c0;
             color: #4a3f36;
-            overflow: hidden;
             text-shadow: 0 0 2px rgba(74, 63, 54, 0.3);
             transition: background-color 0.3s, color 0.3s;
         }
@@ -191,6 +190,9 @@
             list-style-type: disc;
             padding-left: 2rem;
         }
+        #scroll-buffer {
+            height: 1vh;
+        }
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -236,9 +238,10 @@
             </div>
         </div>
 
-        <div id="terminal" class="w-full h-[95vh] rounded-lg shadow-2xl shadow-stone-500/20 p-4 flex flex-col">
-            <div class="h-16"></div> <div id="output" class="flex-grow overflow-y-auto">
-                 <div class="flex justify-between items-center mb-4">
+      <div id="terminal" class="w-full min-h-[95vh] rounded-lg shadow-2xl shadow-stone-500/20 p-4 flex flex-col">
+    <div class="h-16"></div>
+    <div id="output" class="flex-grow flex flex-col justify-start">
+                <div class="flex justify-between items-center mb-4">
                     <div id="clock"></div>
                 </div>
             </div>
@@ -248,12 +251,22 @@
             </div>
             <div id="footer"></div>
         </div>
-        <div id="gui-mode" class="w-full h-[95vh] rounded-lg shadow-2xl shadow-stone-500/20 p-8 overflow-y-auto">
-            <div class="h-16"></div> </div>
+        <div id="gui-mode" class="w-full min-h-[95vh] rounded-lg shadow-2xl shadow-stone-500/20 p-8 overflow-y-auto">
+                        <div class="h-16"></div> </div>
     </div>
-
+    <div id="scroll-buffer"></div>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('keydown', (e) => {
+            // Check if the user is trying to use a keyboard shortcut or is already typing in an input
+            if (e.ctrlKey || e.metaKey || e.altKey || document.activeElement === inputEl) {
+                return;
+            }
+
+            scrollBufferEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            inputEl.focus();
+        });
+        
         const portfolioData = {
             about: `I’ve always been fascinated by puzzles, and to me, intelligence itself is the most interesting puzzle of all. This curiosity is what led me to pursue a specialized Bachelor’sdegree in Artificial Intelligence and Machine Learning back in India. I wanted to do more than just use technology; I wanted to understand how to build it. That same drive brought me to Rutgers for my Master's in Computer Science, where I get to dive into even deeper challenges, like robotics and adaptive learning, alongside brilliant PhD students.\n\nBeyond the code, I’m a natural collaborator and organizer, having led events and served as a class representative. I believe the best solutions come from diverse minds working together. Ultimately, I'm a builder at heart, driven by the challenge of creating elegant solutions for complex problems and seeing them make a real-world impact.`,
             education: [
@@ -483,6 +496,7 @@
         const guiToggleButton = document.getElementById('gui-toggle-button');
         const clockEl = document.getElementById('clock');
         const footerEl = document.getElementById('footer');
+        const scrollBufferEl = document.getElementById('scroll-buffer');
         const networkCanvas = document.getElementById('network-canvas');
         const networkCtx = networkCanvas.getContext('2d');
         const commandHistory = [];
@@ -896,6 +910,6 @@
         startBootSequence();
     });
     </script>
-
+    
 </body>
 </html>
