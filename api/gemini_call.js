@@ -1,10 +1,14 @@
 // Import the Google Generative AI SDK
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
+// --- NEW: In-memory cache ---
+// This simple object will store responses. For a production app with high traffic,
+// you might use a more robust solution like Redis, but this is perfect for a portfolio.
+const cache = new Map();
+
 // This function will handle incoming requests from your portfolio site
 export default async function handler(req, res) {
-  // --- CORS FIX ---
-  // Set headers to allow requests from your GitHub Pages domain
+  // Set CORS headers to allow requests from your GitHub Pages domain
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', 'https://pujasridhar.github.io');
   res.setHeader('Access-Control-Allow-Methods', 'POST');
@@ -15,7 +19,6 @@ export default async function handler(req, res) {
     res.status(200).end();
     return;
   }
-  // --- END CORS FIX ---
 
   // Ensure this function only responds to POST requests
   if (req.method !== 'POST') {
@@ -24,14 +27,26 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Access your secret Gemini API key from Vercel's environment variables
+    const { prompt, portfolioData } = req.body;
+
+    // --- NEW: Check the cache first ---
+    if (cache.has(prompt)) {
+      // If the question has been asked before, return the saved answer
+      console.log(`Returning cached response for: "${prompt}"`);
+      return res.status(200).json({
+        candidates: [{
+          content: {
+            parts: [{ text: cache.get(prompt) }]
+          }
+        }]
+      });
+    }
+
+    // If the prompt is not in the cache, proceed to call the API
+    console.log(`Fetching new response from API for: "${prompt}"`);
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // Get the user's prompt and your portfolio data from the request
-    const { prompt, portfolioData } = req.body;
-
-    // Create a detailed prompt for the AI
     const detailedPrompt = `
       You are Cogsworth, an AI assistant for Puja Sridhar's portfolio. 
       Your personality is professional, slightly formal, and helpful, inspired by a vintage computer terminal.
@@ -45,10 +60,12 @@ export default async function handler(req, res) {
       Now, please answer the following user question: "${prompt}"
     `;
 
-    // Send the detailed prompt to the Gemini model
     const result = await model.generateContent(detailedPrompt);
     const response = await result.response;
     const text = response.text();
+
+    // --- NEW: Save the new response to the cache ---
+    cache.set(prompt, text);
 
     // Send the AI's response back to your portfolio website
     res.status(200).json({
