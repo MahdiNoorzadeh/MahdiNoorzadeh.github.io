@@ -1,83 +1,85 @@
-// Import the Google Generative AI SDK
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+// api/gemini_call.js
 
-// --- NEW: In-memory cache ---
-// This simple object will store responses. For a production app with high traffic,
-// you might use a more robust solution like Redis, but this is perfect for a portfolio.
-const cache = new Map();
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { portfolioData } from '../portfolio-data.js';
 
-// This function will handle incoming requests from your portfolio site
 export default async function handler(req, res) {
-  // Set CORS headers to allow requests from your GitHub Pages domain
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', 'https://pujasridhar.github.io');
-  res.setHeader('Access-Control-Allow-Methods', 'POST');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', 'https://pujasridhar.github.io');
+    res.setHeader('Access-Control-Allow-Methods', 'POST');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Handle preflight requests for CORS
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
-
-  // Ensure this function only responds to POST requests
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', ['POST']);
-    return res.status(405).end(`Method ${req.method} Not Allowed`);
-  }
-
-  try {
-    const { prompt, portfolioData } = req.body;
-
-    // --- NEW: Check the cache first ---
-    if (cache.has(prompt)) {
-      // If the question has been asked before, return the saved answer
-      console.log(`Returning cached response for: "${prompt}"`);
-      return res.status(200).json({
-        candidates: [{
-          content: {
-            parts: [{ text: cache.get(prompt) }]
-          }
-        }]
-      });
+    if (req.method === 'OPTIONS') {
+        res.status(200).end();
+        return;
     }
 
-    // If the prompt is not in the cache, proceed to call the API
-    console.log(`Fetching new response from API for: "${prompt}"`);
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    if (req.method !== 'POST') {
+        res.setHeader('Allow', ['POST']);
+        return res.status(405).end(`Method ${req.method} Not Allowed`);
+    }
 
-    const detailedPrompt = `
-      You are Cogsworth, an AI assistant for Puja Sridhar's portfolio. 
-      Your personality is professional, slightly formal, and helpful, inspired by a vintage computer terminal.
-      Your purpose is to answer questions about Puja Sridhar based ONLY on the portfolio data provided below.
-      Do not invent information. If the answer is not in the data, state that the information is not available in your knowledge base.
-      Keep your answers concise and to the point.
+    try {
+        const { prompt, conversationHistory } = req.body;
 
-      Here is the portfolio data in JSON format:
-      ${JSON.stringify(portfolioData, null, 2)}
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-      Now, please answer the following user question: "${prompt}"
-    `;
+        // This is the core instruction for the AI. It's now more explicit.
+        const systemInstruction = `
+            You are Cogsworth, an AI assistant for Puja Sridhar's portfolio. Your entire purpose is to answer questions about Puja Sridhar based ONLY on her portfolio data provided below.
 
-    const result = await model.generateContent(detailedPrompt);
-    const response = await result.response;
-    const text = response.text();
+            **Crucial Rule:** When asked about "her", "she", or "Puja", you must always refer to the portfolio data.
 
-    // --- NEW: Save the new response to the cache ---
-    cache.set(prompt, text);
+            Your persona is professional, slightly formal, and helpful, inspired by a vintage computer terminal. Do not invent information. If an answer is not in the data, state that the information is not available in your knowledge base. Keep your answers concise.
 
-    // Send the AI's response back to your portfolio website
-    res.status(200).json({
-      candidates: [{
-        content: {
-          parts: [{ text: text }]
+            Here is the portfolio data:
+            ${JSON.stringify(portfolioData, null, 2)}
+        `;
+
+        // We construct the full chat history, starting with the system instruction.
+        const fullHistory = [
+            // The model treats the first user message as its primary instruction.
+            { role: "user", parts: [{ text: systemInstruction }] },
+            // We prime the model by having it "acknowledge" the instruction.
+            { role: "model", parts: [{ text: "Acknowledged. I am Cogsworth, ready to answer questions about Puja Sridhar based on the provided data." }] },
+            // Now, we add the actual conversation history from the website.
+            ...(conversationHistory || []).map(item => ({
+                // The API uses 'model' for the assistant's role, so we map it.
+                role: item.role === 'assistant' ? 'model' : 'user',
+                parts: [{ text: item.text }]
+            }))
+        ];
+
+        const chat = model.startChat({
+            history: fullHistory, // Pass the complete history
+            generationConfig: {
+                maxOutputTokens: 500,
+            },
+        });
+
+        const result = await chat.sendMessageStream(prompt);
+
+        // Set headers for streaming text
+        res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+        res.setHeader('Transfer-Encoding', 'chunked');
+
+        // Stream the response back to the client
+        for await (const chunk of result.stream) {
+            if (chunk && chunk.text) {
+                res.write(chunk.text());
+            }
         }
-      }]
-    });
+        
+        res.end();
 
-  } catch (error) {
-    console.error("Error calling Gemini API:", error);
-    res.status(500).json({ error: "An error occurred while processing the request." });
-  }
+    } catch (error) {
+        console.error("Error calling Gemini API:", error);
+        if (!res.headersSent) {
+            res.status(500).json({ error: "An error occurred while processing the request." });
+        } else {
+            res.end();
+        }
+    }
 }
