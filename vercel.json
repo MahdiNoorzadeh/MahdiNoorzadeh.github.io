@@ -1,5 +1,14 @@
 {
-  "framework": null,
-  "installCommand": null,
-  "buildCommand": null
+  "functions": {
+    "api/gemini_call.js": {
+      "memory": 1024
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/gemini_call",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/gemini_call.js"
+    }
+  ]
 }
