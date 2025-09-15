@@ -143,7 +143,7 @@ export const portfolioData = {
                 "<strong>Action:</strong> Implemented and compared multiple anomaly detection algorithms, including Isolation Forest, Local Outlier Factor, and SVMs.",
                 "<strong>Result:</strong> The Isolation Forest model proved most effective, successfully identifying 95% of fraudulent transactions in the dataset and improving detection speed by 25% over other models."
             ],
-        url: "https://github.com/PujaSridhar/Credit_Card_Fraud_Detection"
+            url: "https://github.com/PujaSridhar/Credit_Card_Fraud_Detection"
         }
     ],
     certifications: [
