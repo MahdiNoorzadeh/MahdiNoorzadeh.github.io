@@ -9,6 +9,25 @@ const index = pinecone.index('portfolio-rag');
 const genAI = new GoogleGenAI({ apiKey: process.env.GOOGLE_AI_API_KEY });
 
 export default async function handler(req, res) {
+    const allowedOrigins = [
+        'https://pujasridhar.github.io',
+        'https://puja-sridhar-github-io.vercel.app'
+    ];
+
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    // Handle the preflight OPTIONS request
+    if (req.method === 'OPTIONS') {
+        res.status(200).end();
+        return;
+    }
+
     if (req.method === 'POST') {
         try {
             const { prompt, conversationHistory } = req.body;
