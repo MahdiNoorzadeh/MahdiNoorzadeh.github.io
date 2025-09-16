@@ -410,12 +410,7 @@
 
                     const responseTextSpan = document.createElement('span');
 
-                    const cursor = document.createElement('span');
-                    cursor.className = 'typing-cursor';
-                    cursor.innerHTML = '&#9646;';
-
                     responseEntry.appendChild(responseTextSpan);
-                    responseEntry.appendChild(cursor);
                     outputEl.appendChild(responseEntry);
 
                     const reader = response.body.getReader();
@@ -441,8 +436,6 @@
                             await new Promise(resolve => setTimeout(resolve, 1));
                         }
                     }
-
-                    cursor.remove();
 
                     conversationHistory.push({ role: 'assistant', text: fullResponseText });
 

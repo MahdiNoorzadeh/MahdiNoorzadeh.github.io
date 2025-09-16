@@ -37,12 +37,10 @@ body {
 #terminal {
     animation: flicker 0.15s infinite;
     scrollbar-width: none;
-    /* Firefox */
 }
 
 #terminal::-webkit-scrollbar {
     display: none;
-    /* Safari and Chrome */
 }
 
 #scanlines {
@@ -57,7 +55,6 @@ body {
 }
 
 @keyframes flicker {
-
     0%,
     100% {
         opacity: 1;
@@ -74,11 +71,11 @@ body {
     outline: none;
     color: #4a3f36;
     font-family: 'Courier Prime', monospace;
-    caret-color: #4a3f36;
+    caret-color: transparent;
     word-break: break-all;
     -webkit-user-modify: read-write-plaintext-only;
-    /* Prevents rich text pasting */
     flex-grow: 1;
+    position: relative;
 }
 
 #terminal-input:focus {
@@ -225,7 +222,10 @@ body.dark #gui-mode {
     background-color: #282828;
 }
 
-body.dark #terminal-input,
+body.dark #terminal-input {
+    caret-color: transparent;
+}
+
 body.dark .link,
 body.dark #contact-icons a,
 body.dark #contact-icons .icon-button {
@@ -303,7 +303,14 @@ body.dark #gui-footer {
     border-top-color: rgba(235, 219, 178, 0.2);
 }
 
-.typing-cursor {
+#terminal-input::after {
+    content: '';
+    display: inline-block;
+    width: 0.15ch;
+    height: 1.1em;
+    background-color: currentColor;
+    vertical-align: middle;
+    margin-top: -0.2em;
     animation: blink 1s step-end infinite;
 }
 
@@ -313,7 +320,6 @@ body.dark #gui-footer {
     }
 }
 
-/* CSS FOR THE TABBED INTERFACE */
 .gui-tabs-nav {
     display: flex;
     flex-wrap: wrap;
@@ -331,12 +337,10 @@ body.dark .gui-tabs-nav {
     border: none;
     background: transparent;
     color: inherit;
-    /* Inherits from body */
     opacity: 0.6;
     transition: opacity 0.2s, border-bottom-color 0.2s;
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
-    /* Aligns with the container's bottom border */
 }
 
 .tab-button:hover {
@@ -357,17 +361,15 @@ body.dark .tab-button.active {
 
 .tab-content {
     display: none;
-    /* Hide all content panels by default */
 }
 
 .tab-content.active {
     display: block;
-    /* Show only the active one */
 }
 
 #terminal,
 #gui-mode {
-    scrollbar-width: thin; /* Firefox */
+    scrollbar-width: thin;
     scrollbar-color: #4a3f36 #d2d2d2;
 }
 
@@ -378,7 +380,7 @@ body.dark #gui-mode {
 
 #terminal::-webkit-scrollbar,
 #gui-mode::-webkit-scrollbar {
-    width: 8px; /* Safari and Chrome */
+    width: 8px;
 }
 
 #terminal::-webkit-scrollbar-track,
@@ -397,4 +399,49 @@ body.dark #terminal::-webkit-scrollbar-thumb,
 body.dark #gui-mode::-webkit-scrollbar-thumb {
     background-color: #fe8019;
     border-color: #282828;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .terminal-container {
+        height: 90vh;
+    }
+
+    #contact-icons-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    #contact-icons {
+        justify-content: center;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+    
+    #status-bar {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    #terminal {
+        padding: 0.75rem;
+    }
+
+    .output-entry {
+        margin-bottom: 0.5rem;
+    }
+
+    .prompt-live {
+        white-space: normal;
+        word-break: break-all;
+    }
+    
+    #terminal-input {
+        min-width: 0;
+    }
 }
