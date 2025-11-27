@@ -1,0 +1,73 @@
+{
+  "name": "Mahdi Noorzadeh",
+  "summary": "Backend engineer building reliable APIs with Java, Spring Boot, and cloud-native tooling. Passionate about resilient systems and strong documentation.",
+  "contacts": [
+    { "label": "Email", "url": "mailto:mahdi.noorzadeh.dev@gmail.com" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/mahdinoorzadeh-dev" },
+    { "label": "GitHub", "url": "https://github.com/MahdiNoorzadeh" }
+  ],
+  "experience": [
+    {
+      "role": "Back End Developer",
+      "company": "Rastaar",
+      "period": "Nov 2025 – Present",
+      "highlights": [
+        "Architect and deploy microservices that handle multi-region traffic with single-digit ms latency.",
+        "Automate observability dashboards, reducing incident response time by 20%.",
+        "Champion documentation-first culture so new engineers onboard in < 2 weeks."
+      ]
+    },
+    {
+      "role": "Technical Analyst & Support Engineer",
+      "company": "PayBaar",
+      "period": "2024 – Jan 2025",
+      "highlights": [
+        "Resolved 200+ monthly tickets with a 95% success rate.",
+        "Partnered with backend teams to ship fixes for recurring customer pain points.",
+        "Maintained internal knowledge bases that cut duplicate tickets by 30%."
+      ]
+    },
+    {
+      "role": "Back End Developer",
+      "company": "BaShomal",
+      "period": "Mar 2025 – Jul 2025",
+      "highlights": [
+        "Built and maintained five REST services used by the customer portal.",
+        "Optimized SQL queries to reduce database load by 15%.",
+        "Worked across agile squads to ship releases on a two-week cadence."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "University of Applied Science and Technology",
+      "degree": "B.Sc. Information Technology",
+      "period": "Expected 2027",
+      "details": "Coursework in distributed systems, databases, and secure application design."
+    },
+    {
+      "school": "Imam Khomeini Technical & Vocational College",
+      "degree": "Associate's degree, Computer Software Engineering",
+      "period": "Graduated Sep 2025",
+      "details": "Focused on object-oriented design and production support."
+    }
+  ],
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "REST APIs",
+    "PostgreSQL",
+    "Docker",
+    "Kubernetes",
+    "CI/CD",
+    "Problem Solving",
+    "Documentation",
+    "Team Leadership"
+  ],
+  "languages": [
+    { "language": "English", "level": "C1 Advanced" },
+    { "language": "German", "level": "Conversational" },
+    { "language": "Persian (Farsi)", "level": "Native" }
+  ]
+}
+

@@ -1,0 +1,47 @@
+name: Sync LinkedIn Profile
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync-profile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download latest LinkedIn export
+        env:
+          EXPORT_URL: ${{ secrets.LINKEDIN_EXPORT_URL }}
+        run: |
+          if [ -z "$EXPORT_URL" ]; then
+            echo "::error::Set LINKEDIN_EXPORT_URL secret to a downloadable JSON export."
+            exit 1
+          fi
+          curl -fsSL "$EXPORT_URL" -o data/linkedin-source.json
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Normalize data
+        run: npm run normalize
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet data/profile.json; then
+            echo "No profile changes detected."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/profile.json
+          git commit -m "chore: sync LinkedIn profile"
+          git push
+

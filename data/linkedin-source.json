@@ -1,0 +1,37 @@
+{
+  "profile": {
+    "firstName": "Mahdi",
+    "lastName": "Noorzadeh",
+    "summary": "Backend engineer focused on highly-available systems.",
+    "emailAddress": "mahdi.noorzadeh.dev@gmail.com",
+    "publicProfileUrl": "https://www.linkedin.com/in/mahdinoorzadeh-dev"
+  },
+  "positions": [
+    {
+      "title": "Back End Developer",
+      "companyName": "Rastaar",
+      "startDate": "2025-11",
+      "endDate": "",
+      "description": "Architect microservices.\nOwn observability.\nImprove onboarding."
+    }
+  ],
+  "education": [
+    {
+      "schoolName": "University of Applied Science and Technology",
+      "degreeName": "B.Sc. Information Technology",
+      "startDate": "2025",
+      "endDate": "2027",
+      "notes": "Distributed systems track."
+    }
+  ],
+  "skills": [
+    { "name": "Java" },
+    { "name": "Spring Boot" },
+    { "name": "PostgreSQL" }
+  ],
+  "languages": [
+    { "name": "English", "proficiency": "C1 Advanced" },
+    { "name": "Persian", "proficiency": "Native" }
+  ]
+}
+

@@ -1,101 +1,111 @@
-# Puja Sridhar - Interactive AI Portfolio
+# Mahdi Noorzadeh — Auto-Synced Resume
 
-Welcome to my interactive portfolio, a unique terminal-style website powered by a custom **Retrieval-Augmented Generation (RAG)** pipeline. The AI assistant, **Cogsworth**, leverages Google's Gemini 1.5 Flash and a Pinecone vector database to provide highly accurate, context-aware answers about my professional background.
+Terminal-inspired resume site that runs entirely on **GitHub Pages**. The UI keeps the original neon visuals and sound cues, but the data is now pulled from a single JSON file that is regenerated automatically from my public LinkedIn export.
 
-![Portfolio Screenshot](Terminal.png)
+## Features
 
----
+- ✅ CRT-inspired UI modeled after the *Alien* franchise terminals (folders + scrolling “shared” window)  
+- ✅ Ambient “deep space” hum with retro key beeps and a SOUND: ON/OFF toggle (pure frontend audio)  
+- ✅ Data-driven resume powered by `data/profile.json`  
+- ✅ GitHub Action normalizes the latest LinkedIn export and commits new data nightly  
+- ✅ PDF capture button (html2pdf.js) that prints the visible terminal frame  
+- ✅ Fully static so it works on GitHub Pages without secrets
 
-## Key Features
+## Architecture
 
-* **🤖 RAG-Powered AI Assistant**: Powered by **Google Gemini 1.5 Flash** and a **Pinecone** vector database, Cogsworth uses a Retrieval-Augmented Generation (RAG) pipeline. This allows it to provide answers grounded in my specific resume and project data, minimizing hallucinations and ensuring high accuracy.
-* **💻 Dual Interface**: Seamlessly switch between two distinct views:
-    * **Terminal View**: A retro, command-line interface where you can use commands like `help`, `projects`, and `skills` to navigate.
-    * **Standard GUI View**: A modern, tab-based graphical user interface for a more traditional browsing experience.
-* **🎨 Customizable Theme**: Toggle between a sleek **light mode** and a classic **dark mode**.
-* **🌐 Live Data**: The interface includes a real-time clock and a local weather display that fetches data based on your location.
-* **✨ Dynamic UI**: A subtle, animated network graphic in the background and interactive sound effects create an immersive experience.
-* **📱 Fully Responsive**: Designed to work flawlessly across desktop, tablet, and mobile devices.
+| Layer              | Description                                                                 |
+| ------------------ | --------------------------------------------------------------------------- |
+| `index.html`       | CRT terminal frame + folder layout                                          |
+| `assets/css`       | Alien-style neon HUD styling + scanlines/glow                              |
+| `assets/js/script.js` | Fetches `data/profile.json`, renders folders, types text, handles audio toggle |
+| `data/profile.json` | Normalized resume data consumed by the UI                                  |
+| `.github/workflows/sync-linkedin.yml` | Nightly job that downloads LinkedIn export and updates `profile.json` |
+| `scripts/normalize-linkedin.mjs` | Converts the raw LinkedIn export JSON → `profile.json` schema         |
 
+## `profile.json` Schema
 
----
+```json
+{
+  "name": "Mahdi Noorzadeh",
+  "summary": "Short intro…",
+  "contacts": [{ "label": "LinkedIn", "url": "https://…" }],
+  "experience": [
+    {
+      "role": "Back End Developer",
+      "company": "Rastaar",
+      "period": "Nov 2025 – Present",
+      "highlights": ["Built X", "Shipped Y"]
+    }
+  ],
+  "education": [
+    {
+      "school": "University…",
+      "degree": "B.Sc. IT",
+      "period": "2025 – 2027",
+      "details": "Focus…"
+    }
+  ],
+  "skills": ["Java", "Spring Boot", "..."],
+  "languages": [{ "language": "English", "level": "C1 Advanced" }]
+}
+```
 
-## How It Works: The RAG Pipeline 🧠
+## Local Setup
 
-When you ask Cogsworth a question, it doesn't just pass the query to an LLM. It uses a sophisticated RAG pipeline to ensure the answer is relevant and factually correct based on my portfolio data.
+```bash
+git clone https://github.com/MahdiNoorzadeh/MahdiNoorzadeh.github.io.git
+cd MahdiNoorzadeh.github.io
 
-1.  **Query Embedding**: Your question is converted into a numerical vector representation (an embedding).
-2.  **Vector Search**: This vector is used to search the **Pinecone** database for the most semantically similar chunks of my professional data (experience, project details, skills, etc.).
-3.  **Context Augmentation**: The relevant data retrieved from Pinecone is combined with your original question into an augmented prompt.
-4.  **LLM Generation**: This detailed prompt is sent to **gemini-2.5-flash-lite**, which generates a coherent, context-aware answer based *only* on the information provided.
+# Optional: regenerate profile data from a LinkedIn export
+npm install
+npm run normalize
 
-This process makes the assistant a true expert on my profile, providing answers that are both conversational and factually grounded.
+# Serve locally (any static server works)
+npx serve .
+```
 
----
+1. Drop your latest LinkedIn export JSON into `data/linkedin-source.json`.
+2. Run `npm run normalize` to regenerate `data/profile.json`.
+3. Commit both files (or just `profile.json` if you prefer not to keep the raw export).
 
+## GitHub Action Automation
 
-## Tech Stack
+1. Upload your LinkedIn export somewhere reachable (e.g., a private gist or pre-signed S3 URL).  
+2. In repository settings → **Secrets and variables → Actions**, add `LINKEDIN_EXPORT_URL`.  
+3. The workflow (`.github/workflows/sync-linkedin.yml`) runs nightly (02:00 UTC) and on demand:  
+   - Downloads the export  
+   - Runs `scripts/normalize-linkedin.mjs`  
+   - Commits `data/profile.json` if changes are detected  
+   - GitHub Pages redeploys automatically
 
-* **Frontend**: HTML5, CSS3, Vanilla JavaScript
-* **Styling**: Tailwind CSS
-* **AI & Data Pipeline**:
-    * **LLM**: Google Gemini 1.5 Flash
-    * **Vector Database**: Pinecone
-    * **Backend**: Vercel Serverless Functions
+No secrets ever touch the frontend: the URL is only used inside GitHub Actions.
 
----
+## PDF Download
 
-## Local Setup & Installation 🚀
+- Uses [`html2pdf.js`](https://github.com/eKoopmans/html2pdf.js/) via CDN.  
+- Clicking “PRINT DOSSIER” captures the terminal frame exactly as rendered (with folders + viewer).  
+- SOUND button stays respected (muted noise won’t be embedded in PDF of course 😀).
 
-To run this project locally, you'll need Node.js, the Vercel CLI, and API keys for Google and Pinecone.
+## Deployment
 
-### Prerequisites
+1. Push to `main`.  
+2. Enable GitHub Pages (Settings → Pages → Deploy from `main`, root).  
+3. That’s it — the site is live at `https://<username>.github.io/<repo>/`.
 
-* **Node.js**: Download from [nodejs.org](https://nodejs.org/).
-* **Vercel Account & CLI**: A free Vercel account is required.
-* **Google Gemini API Key**: Get a free key from [Google AI Studio](https://aistudio.google.com/app/apikey).
-* **Pinecone Account & API Key**: Get a free key from [pinecone.io](https://www.pinecone.io/). You will also need your index name and environment.
+Every time the workflow commits a new `profile.json`, Pages rebuilds automatically and the frontend shows the latest data.
 
-### Steps
+### Pre-deploy Checklist
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/PujaSridhar/PujaSridhar.github.io.git](https://github.com/PujaSridhar/PujaSridhar.github.io.git)
-    ```
-2.  **Navigate to the project directory:**
-    ```bash
-    cd PujaSridhar.github.io
-    ```
-3.  **Install the Vercel CLI globally:**
-    ```bash
-    npm install -g vercel
-    ```
-4.  **Data Ingestion**:
-    * This setup assumes you have already populated your Pinecone index. You will need a separate script to process, embed, and upload your portfolio data into your Pinecone index.
-5.  **Create an environment variable file:**
-    Create a new file named `.env` in the project root. Add your API keys and Pinecone details.
-    ```env
-    # Google AI
-    GEMINI_API_KEY="YOUR_GEMINI_API_KEY_HERE"
+1. **LinkedIn data ready (Step 3 from setup)**: confirm `LINKEDIN_EXPORT_URL` references a downloadable JSON export.  
+2. **Normalization pass**: run `npm run normalize` locally and inspect `data/profile.json` before committing.  
+3. **Workflow dry run**: trigger “Sync LinkedIn Profile” from the Actions tab and ensure it finishes without errors.  
+4. **Static preview**: serve locally (`npx serve .`) and verify folder navigation, typewriter animation, audio toggle, and PDF export.  
+5. **Pages configured**: double-check Settings → Pages is still pointed at the root of `main`.
 
-    # Pinecone Vector DB
-    PINECONE_API_KEY="YOUR_PINECONE_API_KEY_HERE"
-    PINECONE_ENVIRONMENT="YOUR_PINECONE_ENVIRONMENT_HERE"
-    PINECONE_INDEX_NAME="your-pinecone-index-name"
-    ```
-6.  **Run the local development server:**
-    This command runs the frontend and the serverless functions in the `/api` directory.
-    ```bash
-    vercel dev
-    ```
-    Your project will now be running at a local address, typically `http://localhost:3000`.
+## Credits
 
----
+- Original terminal aesthetic, neon palette, and UX cues credit **Puja Sridhar**  
+  ([PujaSridhar/PujaSridhar.github.io](https://github.com/PujaSridhar/PujaSridhar.github.io)).  
+- Network animation, audio implementation, JSON data flow, and automation scripts by Mahdi Noorzadeh.
 
-## Contact
-
-Let's connect! You can find me on the following platforms:
-
-* **LinkedIn:** [linkedin.com/in/pujasridhar](https://www.linkedin.com/in/pujasridhar/)
-* **GitHub:** [github.com/pujasridhar](https://github.com/pujasridhar)
-* **Email:** [pujasridhar28@gmail.com](mailto:pujasridhar28@gmail.com)
+Enjoy the automation! Pull requests or suggestions welcome. 🚀
