@@ -1,33 +1,51 @@
-<h1><a href="https://0l1v3rr.github.io/" target="_blank">Kali Linux Terminal Portfolio Website</a></h1>
+# Terminal Portfolio
 
-<img src="./screenshots/2024-09-30.png" alt="screenshot">
+My personal portfolio built as an interactive terminal-style website.
 
-<hr>
+The project is based on and heavily inspired by the original work of
+[Olivér Mrakovics](https://github.com/0l1v3rr) and his
+[github.io terminal portfolio](https://github.com/0l1v3rr/0l1v3rr.github.io).
+
+This version has been significantly customized to reflect my own identity,
+projects, experience, technologies, and visual style.
 
 ## Features
 
-- Kali Linux-like interface
-- Fun commands
+- Interactive Unix-style terminal interface
+- Custom terminal prompt
+- Interactive commands
 - Tab autocomplete
-- Hotkeys
-- Interactive UI
+- Command history
+- Keyboard shortcuts
+- Personal projects and experience
+- Technology stack showcase
+- GitHub, LinkedIn, and email links
+- Custom Berserk-inspired visual theme
+- Responsive layout
+- GitHub Pages deployment
 
-<hr>
+## Tech Stack
 
-[![My Tech Stack](https://github-readme-tech-stack.vercel.app/api/cards?title=This%20Project's%20Tech%20Stack&lineCount=1&theme=github_dark&align=left&line1=typescript,typescript,auto;react,react,auto;tailwindcss,tailwind,auto;)](https://github.com/0l1v3rr/github-readme-tech-stack)
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- PostCSS
 
-<hr>
-
-## Building from source
+## Building from Source
 
 ```sh
-# 1. Clone the repo
-git clone https://github.com/0l1v3rr/0l1v3rr.github.io.git
-cd 0l1v3rr.github.io
+# 1. Clone the repository
+git clone https://github.com/MahdiNoorzadeh/TerminalPortfolio.github.io.git
 
-# 2. Install the necessary dependencies
-npm i
+# 2. Enter the project directory
+cd TerminalPortfolio.github.io
 
-# 3. Run the app
-npm start
-```
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
+npm run dev
+
+# 5. Build for production
+npm run build

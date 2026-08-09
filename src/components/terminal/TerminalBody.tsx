@@ -64,7 +64,7 @@ const TerminalBody: FC<TerminalBodyProps> = () => {
   }, [history]);
 
   return (
-    <section className="terminal-scrollbar h-full w-full overflow-y-scroll px-1 pb-2 pt-1 text-sm text-kali-gray [&_a]:cursor-default hover:[&_a]:underline [&_b]:text-kali-cyan">
+    <section className="terminal-scrollbar h-full w-full overflow-y-scroll px-1 pb-2 pt-1 text-sm text-terminal-gray [&_a]:cursor-default hover:[&_a]:underline [&_b]:text-terminal-cyan">
       {motdVisible && parse(MOTD + "<br/><br/>")}
 
       {history.map((item) => (

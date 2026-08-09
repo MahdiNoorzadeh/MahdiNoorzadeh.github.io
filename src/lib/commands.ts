@@ -1,85 +1,282 @@
 import { Prompt } from "../types";
 
-export const MOTD = `Welcome to 0l1v3rr.github.io!
+export const MOTD = `mahdinoorzadeh.github.io!
 
-GitHub:  &nbsp;&nbsp;<a href="https://github.com/0l1v3rr" target="_blank" rel="noopener noreferrer">https://github.com/0l1v3rr</a>
-LinkedIn: <a href="https://linkedin.com/in/0l1v3rr" target="_blank" rel="noopener noreferrer">https://linkedin.com/in/0l1v3rr</a>
+GitHub:  &nbsp;&nbsp;<a href="https://github.com/MahdiNoorzadeh" target="_blank" rel="noopener noreferrer">Click here To Visit My GitHub Profile</a>
+LinkedIn: <a href="#" target="_blank" rel="noopener noreferrer">Not Available For now.</a>
 
-Hello, I'm <b>Olivér Mrakovics</b>. I am a <b>full-stack</b> engineer specializing in front-end development.
-In September 2024, I became a <b>world champion</b> in <b>web development</b>. 🥇
+Greetings, I'm <b>Mahdi Noorzadeh</b>. A <b>Back-end</b> Engineer with a specialization in Back-end development.
+My expertise encompasses the creation of <b> scalable backend solutions</b> tailored for businesses worldwide./b>. 🥇
 
 Type 'help' to see the available commands.`.replace(/\n/g, "<br/>");
 
-const KALI_LOGO = `
-    <span class="text-kali-blue flex flex-col">
-      <span>${"..............".replace(/ /g, "&nbsp;")}</span>
-      <span>${"            ..,;:ccc,.".replace(/ /g, "&nbsp;")}</span>
-      <span>${"          ......''';lxO.".replace(/ /g, "&nbsp;")}</span>
-      <span>${".....''''..........,:ld;".replace(/ /g, "&nbsp;")}</span>
-      <span>${"           .';;;:::;,,.x,".replace(/ /g, "&nbsp;")}</span>
-      <span>${"      ..'''.            0Xxoc:,.  ...".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"  ....                ,ONkc;,;cokOdc',.".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${" .                   OMo           ':ddo.".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
 
-      <span>${"                    dMc               :OO;".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"                    0M.                 .:o.".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"                    ;Wd".replace(/ /g, "&nbsp;")}</span>
-      <span>${"                     ;XO,".replace(/ /g, "&nbsp;")}</span>
-      <span>${"                       ,d0Odlc;,..".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"                            ..',;:cdOOd::,.".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"                                     .:d;.':;.".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"                                        'd,  .'".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"                                          ;l   ..".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"                                           .o".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"                                             c".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"                                             .'".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
-      <span>${"                                              .".replace(
-        / /g,
-        "&nbsp;"
-      )}</span>
+
+  const TECH_STACK = `
+<div class="tech-stack">
+
+  <div class="tech-stack-category">
+    <div class="tech-stack-title">LANGUAGES</div>
+
+    <div class="tech-stack-items">
+      <span class="tech-stack-item">
+        <img
+          src="https://www.readmecodegen.com/api/social-icon?name=java&size=40"
+          alt="Java"
+          class="tech-stack-icon"
+        />
+        <span class="tech-stack-name">Java</span>
+      </span>
+
+      <span class="tech-stack-item">
+        <img
+          src="https://www.readmecodegen.com/api/social-icon?name=kotlin&size=40"
+          alt="Kotlin"
+          class="tech-stack-icon"
+        />
+        <span class="tech-stack-name">Kotlin</span>
+      </span>
+
+      <span class="tech-stack-item">
+        <img
+          src="https://www.readmecodegen.com/api/social-icon?name=typescript&size=40"
+          alt="TypeScript"
+          class="tech-stack-icon"
+        />
+        <span class="tech-stack-name">TypeScript</span>
+      </span>
+
+      <span class="tech-stack-item">
+        <img
+          src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/csharp.svg"
+          alt="Csharp"
+          class="tech-stack-icon"
+        />
+        <span class="tech-stack-name">C#</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="tech-stack-category">
+  <div class="tech-stack-title">BACKEND</div>
+
+  <div class="tech-stack-items">
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=spring&size=40"
+        alt="Spring Boot"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">Spring Boot</span>
     </span>
-  `;
 
-const TECH_STACK = `<a href="https://github.com/0l1v3rr/github-readme-tech-stack" target="_blank"><img src="https://github-readme-tech-stack.vercel.app/api/cards?title=Tech+Stack&width=420&align=center&titleAlign=center&fontSize=20&lineHeight=10&lineCount=2&theme=0l1v3rr&line1=node.js%2Cnode.js%2Cauto%3Bexpress%2Cexpress%2Cffffff%3Bnestjs%2Cnestjs%2Ce12a54%3B&line2=react%2Creact%2Cauto%3Btailwindcss%2Ctailwind%2Cauto%3Btypescript%2Ctypescript%2Cauto%3B" alt="Tech Stack" /></a>`;
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=nodejs&size=40"
+        alt="Node.js"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">Node.js</span>
+    </span>
+
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=express&size=40"
+        alt="Express.js"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">Express.js</span>
+    </span>
+
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=dotnet&size=40"
+        alt=".NET"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">DotNet</span>
+    </span>
+  </div>
+</div>
+
+<div class="tech-stack-category">
+  <div class="tech-stack-title">DATABASES</div>
+
+  <div class="tech-stack-items">
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=postgresql&size=40"
+        alt="PostgreSQL"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">PostgreSQL</span>
+    </span>
+
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=mongodb&size=40"
+        alt="MongoDB"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">MongoDB</span>
+    </span>
+
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=redis&size=40"
+        alt="Redis"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">Redis</span>
+    </span>
+  </div>
+</div>
+
+<div class="tech-stack-category">
+  <div class="tech-stack-title">INFRASTRUCTURE</div>
+
+  <div class="tech-stack-items">
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=docker&size=40"
+        alt="Docker"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">Docker</span>
+    </span>
+
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=kubernetes&size=40"
+        alt="Kubernetes"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">Kubernetes</span>
+    </span>
+
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=rabbitmq&size=40"
+        alt="RabbitMQ"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">RabbitMQ</span>
+    </span>
+
+    <span class="tech-stack-item">
+      <img
+        src="https://www.readmecodegen.com/api/social-icon?name=git&size=40"
+        alt="Git"
+        class="tech-stack-icon"
+      />
+      <span class="tech-stack-name">Git</span>
+    </span>
+  </div>
+</div>
+
+</div>
+`;
+
+const PROJECTS = `
+<div class="portfolio-section">
+
+  <div class="portfolio-item">
+    <div class="portfolio-title">Multi-Tenant Dynamic Database System</div>
+    <div class="portfolio-description">
+      A multi-tenant backend system with isolated tenant databases,
+      automatic database provisioning, migrations, and tenant management.
+    </div>
+    <div class="portfolio-tech">
+      Kotlin · Spring Boot · PostgreSQL · Flyway · HikariCP
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-title">Terminal Portfolio</div>
+    <div class="portfolio-description">
+      An interactive terminal-style personal portfolio built for GitHub Pages.
+    </div>
+    <div class="portfolio-tech">
+      React · TypeScript · Vite · Tailwind CSS
+    </div>
+  </div>
+
+</div>
+`;
+
+const EXPERIENCE = `
+<div class="portfolio-section">
+
+  <div class="portfolio-item">
+    <div class="portfolio-title">Back-end Intern — BaShomal</div>
+    <div class="portfolio-meta">03/2025 — 06/2025 · Remote</div>
+    <div class="portfolio-description">
+      Developed REST APIs using Spring Boot and worked with PostgreSQL
+      and Git in a backend development environment.
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-title">Technical Support — Paybar</div>
+    <div class="portfolio-meta">10/2024 — 01/2025 · Remote</div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-title">Product Support Specialist — Digikala</div>
+    <div class="portfolio-meta">10/2025 — 11/2025 · Remote</div>
+  </div>
+
+</div>
+`;
+
+const NEOFETCH = `
+<div class="neofetch">
+
+  <div class="neofetch-logo">
+    <img src="/Berserk-Logo-Photoroom.png" alt="Berserk Mark">
+  </div>
+
+  <div class="neofetch-info">
+    <div><b>Name:</b> Mahdi Noorzadeh</div>
+    <div><b>Role:</b> Backend Engineer</div>
+    <div><b>OS:</b> Windows</div>
+    <div><b>Location:</b> Earth - Iran (Change is absolute)</div>
+    <div><b>Languages:</b> Persian, English, German</div>
+  </div>
+
+</div>
+`;
+
+const CONTACT = `
+<div class="portfolio-section">
+  <div class="portfolio-title">CONTACT</div>
+
+  <div>
+    GitHub:
+    <a href="https://github.com/MahdiNoorzadeh"
+       target="_blank"
+       rel="noreferrer noopener">
+      GitHub
+    </a>
+  </div>
+
+  <div>
+    LinkedIn:
+    <a href="#"
+       target="_blank"
+       rel="noreferrer noopener">
+      Not Available For now.
+    </a>
+  </div>
+
+  <div>
+    Email:
+    <a href="mailto:mahdinooorzadeh1@gmail.com">
+      Email
+    </a>
+  </div>
+</div>
+`;
 
 const COMMANDS: Record<
   string,
@@ -90,21 +287,24 @@ const COMMANDS: Record<
   motd: () => MOTD,
   pwd: () => "/",
   date: () => new Date().toLocaleDateString(),
-  github: () => openLink("https://github.com/0l1v3rr"),
-  linkedin: () => openLink("https://linkedin.com/in/0l1v3rr"),
-  repo: () => openLink("https://github.com/0l1v3rr/0l1v3rr.github.io"),
-  email: () => openLink("mailto:oliver.mrakovics@gmail.com"),
+  github: () => openLink("https://github.com/MahdiNoorzadeh"),
+  linkedin: () => openLink("#"),
+  repo: () => openLink("https://github.com/MahdiNoorzadeh/TerminalPortfolio.github.io"),
+  email: () => openLink("mailto:MahdiNoorzadeh1@gmail.com"),
   cat: () =>
     `Here's a cute cat for you! 🐱<br/><br/>${openLink("https://cataas.com/cat/cute")}`,
-  kali: () => KALI_LOGO,
   techstack: () => TECH_STACK,
+  projects: () => PROJECTS,
+  experience: () => EXPERIENCE,
+  neofetch: () => NEOFETCH,
+  contact: () => CONTACT,
   about: (username) => `Hello, ${username}!
 
-    Passionate about <b>web development</b>, I am a <b>full-stack engineer</b> specializing in <b>front-end development</b>. I started my coding journey at the age of <b>12</b>, proving my dedication and expertise in the field.
-
-    My focus on delivering high-quality applications is fueled by a genuine interest in leading technologies, particularly <b>React</b>, <b>TypeScript</b>, and <b>Node.js</b>. Leveraging hands-on experience with various JavaScript frameworks and libraries <b>(Next.js, Express, NestJS, etc.)</b> within the React and Node.js ecosystem, I bring a versatile skill set to every project.
-
-    I also enjoy showing off my skills in <b>various competitions</b>. My most notable achievement is my participation in the prestigious <b>WorldSkills</b> competitions, where I won a <b>gold medal in Web Technologies category</b>, making me a <b>world champion</b>.`,
+    My name is Mahdi, and I am a <b>Back-end engineer</b> specializing in <b>Developing low-cost, high-performance backend solutions</b>. In addition to coding, I have a passion for the gaming industry and was a story writer at one point, a role I hope to return to someday.
+    <br/><br/>
+    I value teamwork and the importance of working effectively along side my colleagues, especially when it comes to <b>knowledge sharing and knowledge transfer</b>.
+    <br/><br/>
+    In my free time, I enjoy outdoor activities, spending time with loved ones, and sharing stories.`,
   echo: (_, args) => args.join("&nbsp;"),
   history: (_, __, history) => history.join("<br/>"),
 };
@@ -123,9 +323,9 @@ export function getCommandResponse(
 
   if (command in COMMANDS) {
     let result = COMMANDS[command](username, args, history);
-    if (command !== "kali") {
-      result = result.replace(/\n/g, "<br/>");
-    }
+    if (command !== "terminal" && command !== "techstack") {
+  result = result.replace(/\n/g, "");
+}
 
     return result;
   }
@@ -141,5 +341,6 @@ export function getCommandResponse(
 
 function openLink(url: string) {
   setTimeout(() => window.open(url, "_blank")?.focus(), 1000);
-  return `Redirecting to <a href="" target="_blank" rel="noreferrer noopener">${url}</a>...`;
+
+  return `Redirecting to <a href="${url}" target="_blank" rel="noreferrer noopener">${url}</a>...`;
 }

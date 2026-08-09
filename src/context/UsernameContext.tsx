@@ -31,15 +31,15 @@ interface UsernameContextProviderProps extends PropsWithChildren {}
 const UsernameContextProvider: FC<UsernameContextProviderProps> = ({
   children,
 }) => {
-  const [username, setUsername] = useLocalStorage("username", "root");
+  const [username, setUsername] = useLocalStorage("username", "mahdi");
 
   function handleUsernameChange(possibleUsername?: string | null) {
-    const newUsername = possibleUsername || "root";
+    const newUsername = possibleUsername || "mahdi";
     setUsername(newUsername);
   }
 
   useEffect(() => {
-    document.title = `${username}@kali: ~`;
+    document.title = `${username}@terminal: ~`;
   }, [username]);
 
   return (
