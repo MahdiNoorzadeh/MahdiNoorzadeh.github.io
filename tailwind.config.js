@@ -46,6 +46,7 @@ export default {
       },
 
       fontFamily: {
+        "jetbrains-mono": ["JetBrains Mono", "Fira Code", "monospace"],
         "fira-code": ["Fira Code", "monospace"],
         segoe: "Segoe UI",
       },

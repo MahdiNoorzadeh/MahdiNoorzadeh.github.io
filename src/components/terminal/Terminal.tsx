@@ -13,7 +13,7 @@ const Terminal = () => {
         border
         border-terminal-border
         bg-terminal-gray-dark
-        font-fira-code
+        font-jetbrains-mono
         text-sm
         shadow-terminal
         md:rounded-md
