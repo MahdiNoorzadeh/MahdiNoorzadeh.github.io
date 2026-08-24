@@ -2,10 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-*::selection {
-  color: unset;
-  background-color: rgba(255, 255, 255, 0.2);
+html,
+body,
+#root {
+  min-height: 100%;
 }
+
+html {
+  background: #1C1B1A;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(168, 159, 124, 0.025),
+      transparent 55%
+    ),
+    #1C1B1A;
+  color: #C8C4BC;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+*::selection {
+  color: #C8C4BC;
+  background-color: #8C7A4A;
+}
+
 
 @layer base {
   .terminal-scrollbar::-webkit-scrollbar {
@@ -118,4 +148,26 @@
 
 .neofetch-info b {
   font-weight: 700;
+}
+
+.terminal-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .terminal-page {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-page {
+    padding: 0;
+  }
 }

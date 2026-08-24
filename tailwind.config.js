@@ -9,6 +9,13 @@ export default {
       },
 
       colors: {
+        "worn-bg": "#1C1B1A",
+        "worn-terminal": "#141312",
+        "worn-text": "#C8C4BC",
+        "worn-muted": "#8A857C",
+        "worn-accent": "#A89F7C",
+        "worn-burgundy": "#6B3A3A",
+        "worn-cursor": "#8C7A4A",
         "terminal-text-muted": "#8C8C8C",
         "terminal-black": "#1F2229",
         "terminal-gray-dark": "#13141a",
@@ -59,7 +66,7 @@ export default {
 
       boxShadow: {
         "5xl": "0 10px 30px 0 rgba(0, 0, 0, 0.75)",
-        terminal: "0 0 0 3px rgba(0, 0, 0, 0.16)",
+        terminal: "0 18px 50px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(200, 196, 188, 0.04)",
       },
     },
   },

@@ -4,7 +4,9 @@ import UsernameContextProvider from "./context/UsernameContext";
 const App = () => {
   return (
     <UsernameContextProvider>
-      <Terminal />
+      <main className="terminal-page">
+        <Terminal />
+      </main>
     </UsernameContextProvider>
   );
 };
