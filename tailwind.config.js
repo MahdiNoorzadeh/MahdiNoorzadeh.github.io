@@ -29,6 +29,8 @@ export default {
         "terminal-green": "#A89F7C",
         "terminal-green-dark": "#8C7A4A",
 
+        "terminal-hint": "#628BA9",
+
         "terminal-cyan": "#C8C4BC",
         "terminal-cyan-dark": "#8A857C",
         "terminal-cursor": "#8C7A4A",

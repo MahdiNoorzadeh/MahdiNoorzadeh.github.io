@@ -64,7 +64,7 @@ const TerminalBody: FC<TerminalBodyProps> = () => {
   }, [history]);
 
   return (
-      <section className="terminal-scrollbar h-full w-full overflow-y-scroll px-4 pb-6 pt-4 text-sm leading-relaxed text-terminal-gray [&_a]:cursor-default hover:[&_a]:underline [&_b]:text-terminal-cyan">      {motdVisible && parse(MOTD + "<br/><br/>")}
+      <section className="terminal-scrollbar h-full w-full overflow-y-scroll px-4 pb-6 pt-4 text-sm leading-relaxed text-terminal-gray [&_a]:cursor-default hover:[&_a]:underline [&_b]:text-terminal-hint">      {motdVisible && parse(MOTD + "<br/><br/>")}
       {history.map((item) => (
         <Fragment key={item.id}>
           <TerminalPrompt username={item.username}>

@@ -58,7 +58,7 @@ body {
       rgba(168, 159, 124, 0.025),
       transparent 55%
     ),
-    #1C1B1A;
+    #3d4868;
   color: #C8C4BC;
   font-family: "JetBrains Mono", "Fira Code", monospace;
   font-size: 14px;
@@ -383,35 +383,33 @@ body {
     linear-gradient(
       to right,
       rgba(20, 19, 18, 0.98) 0%,
-      rgba(20, 19, 18, 0.92) 42%,
-      rgba(20, 19, 18, 0.72) 70%,
-      rgba(20, 19, 18, 0.55) 100%
-    ),
-    url("/sword-berserk.png");
+      rgba(20, 19, 18, 0.94) 38%,
+      rgba(61, 72, 102, 0.78) 72%,
+      rgba(61, 72, 102, 0.9) 100%
+    );
 
-  background-repeat: no-repeat;
-  background-position:
-    center,
-    right 3% bottom 8%;
-
-  background-size:
-    100% 100%,
-    min(58%, 700px) auto;
-
-  opacity: 0.18;
-  filter: grayscale(1) contrast(0.9);
+  opacity: 1;
 }
 
+.terminal-artwork::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/sword-berserk.png");
+  background-repeat: no-repeat;
+  background-position: right 3% bottom 8%;
+  background-size: min(58%, 700px) auto;
+
+  filter: grayscale(1) contrast(0.9);
+  opacity: 0.18;
+}
+
+
 @media (max-width: 700px) {
-  .terminal-artwork {
-    background-position:
-      center,
-      right -10% bottom 4%;
-
-    background-size:
-      100% 100%,
-      min(75%, 420px) auto;
-
+  .terminal-artwork::after {
+    background-position: right -10% bottom 4%;
+    background-size: min(75%, 420px) auto;
     opacity: 0.1;
   }
 }
