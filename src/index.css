@@ -367,3 +367,51 @@ body {
     gap: 0.35rem;
   }
 }
+
+.terminal-window {
+  isolation: isolate;
+  background-color: #141312;
+}
+
+.terminal-artwork {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(20, 19, 18, 0.98) 0%,
+      rgba(20, 19, 18, 0.92) 42%,
+      rgba(20, 19, 18, 0.72) 70%,
+      rgba(20, 19, 18, 0.55) 100%
+    ),
+    url("/sword-berserk.png");
+
+  background-repeat: no-repeat;
+  background-position:
+    center,
+    right 3% bottom 8%;
+
+  background-size:
+    100% 100%,
+    min(58%, 700px) auto;
+
+  opacity: 0.18;
+  filter: grayscale(1) contrast(0.9);
+}
+
+@media (max-width: 700px) {
+  .terminal-artwork {
+    background-position:
+      center,
+      right -10% bottom 4%;
+
+    background-size:
+      100% 100%,
+      min(75%, 420px) auto;
+
+    opacity: 0.1;
+  }
+}
