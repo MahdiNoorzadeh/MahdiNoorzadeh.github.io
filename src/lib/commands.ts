@@ -181,23 +181,36 @@ const PROJECTS = `
 <div class="portfolio-section">
 
   <div class="portfolio-item">
-    <div class="portfolio-title">Multi-Tenant Dynamic Database System</div>
+    <div class="portfolio-title"> URL Shortener </div>
     <div class="portfolio-description">
-      A multi-tenant backend system with isolated tenant databases,
-      automatic database provisioning, migrations, and tenant management.
+      A REST API for managing short URLs with features like shortening, HTTP 302 redirects, expiration, click tracking, and analytics. 
+      It uses Redis caching with the Cache-Aside pattern and PostgreSQL for reliable persistence and better performance.
+    </div>
+    <div class="portfolio-description-">
+      Project Link : <a href="https://github.com/MahdiNoorzadeh/url-shortener"
+      target="_blank"
+      rel="noopener noreferrer"
+        >github.com/MahdiNoorzadeh/url-shortener</a>
     </div>
     <div class="portfolio-tech">
-      Kotlin · Spring Boot · PostgreSQL · Flyway · HikariCP
+      Java 25 · Spring Boot · PostgreSQL · Redis · Docker
     </div>
   </div>
 
   <div class="portfolio-item">
-    <div class="portfolio-title">Terminal Portfolio</div>
+    <div class="portfolio-title">CipherVault</div>
     <div class="portfolio-description">
-      An interactive terminal-style personal portfolio built for GitHub Pages.
+      A secure desktop application for managing API tokens across projects and environments, 
+      protected by AES-256-GCM encryption with the key stored in the operating system's keyring.
+    </div>
+     <div class="portfolio-description-">
+      Project Link : <a href="https://github.com/MahdiNoorzadeh/CipherVault"
+      target="_blank"
+      rel="noopener noreferrer"
+      >github.com/MahdiNoorzadeh/CipherVault</a>
     </div>
     <div class="portfolio-tech">
-      React · TypeScript · Vite · Tailwind CSS
+      Electron · Vue.js 3 · JavaScript · Realm · AES-256-GCM
     </div>
   </div>
 
