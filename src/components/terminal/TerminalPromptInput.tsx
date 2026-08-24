@@ -106,7 +106,7 @@ const TerminalPromptInput: FC<TerminalPromptInputProps> = ({
       />
 
       {autocompleteCommand && (
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 text-terminal-text-muted">
+        <div className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-terminal-text-muted opacity-60">
           {[...input].map((_, idx) => (
             <Fragment key={idx}>&nbsp;</Fragment>
           ))}
@@ -116,13 +116,13 @@ const TerminalPromptInput: FC<TerminalPromptInputProps> = ({
 
       <div
         className={twMerge(
-          "pointer-events-none absolute left-0 top-1/2 h-[20px] max-w-full -translate-y-1/2 overflow-hidden overflow-ellipsis whitespace-nowrap pr-2"
+          "pointer-events-none absolute left-0 top-1/2 h-[24px] max-w-full -translate-y-1/2 overflow-hidden overflow-ellipsis whitespace-nowrap pr-2 leading-6"
         )}
       >
         {inputFocus && (
           <span
             className={twMerge(
-              "content[''] absolute top-0 h-[20px] w-2 bg-terminal-cursor/[.8]",
+              "content[''] absolute top-0 h-[20px] w-[0.55ch] bg-terminal-cursor/[.8]",
               shouldBlink && "animate-blink"
             )}
             style={{ left: `${input.length === 0 ? 0 : caretPosition}ch` }}
