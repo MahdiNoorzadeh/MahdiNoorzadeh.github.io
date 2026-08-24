@@ -256,7 +256,7 @@ const CONTACT = `
     <a href="https://github.com/MahdiNoorzadeh"
        target="_blank"
        rel="noreferrer noopener">
-      GitHub
+      github.com/MahdiNoorzadeh
     </a>
   </div>
 
@@ -271,8 +271,8 @@ const CONTACT = `
 
   <div>
     Email:
-    <a href="mailto:mahdinooorzadeh1@gmail.com">
-      Email
+    <a href="mailto:mahdinoorzadeh1@gmail.com">
+      mahdinoorzadeh1@gmail.com
     </a>
   </div>
 </div>
@@ -288,9 +288,9 @@ const COMMANDS: Record<
   pwd: () => "/",
   date: () => new Date().toLocaleDateString(),
   github: () => openLink("https://github.com/MahdiNoorzadeh"),
-  linkedin: () => openLink("#"),
+  linkedin: () => "My LinkedIn is currently unavailable.",
   repo: () => openLink("https://github.com/MahdiNoorzadeh/TerminalPortfolio.github.io"),
-  email: () => openLink("mailto:MahdiNoorzadeh1@gmail.com"),
+  email: () => `Here's my email address.<br/><br/>${openLink("mailto:mahdinoorzadeh1@gmail.com")}`,
   cat: () =>
     `Here's a cute cat for you! 🐱<br/><br/>${openLink("https://cataas.com/cat/cute")}`,
   techstack: () => TECH_STACK,
