@@ -122,7 +122,7 @@ const TerminalPromptInput: FC<TerminalPromptInputProps> = ({
         {inputFocus && (
           <span
             className={twMerge(
-              "content[''] absolute top-0 h-[20px] w-2 bg-terminal-gray/[.8]",
+              "content[''] absolute top-0 h-[20px] w-2 bg-terminal-cursor/[.8]",
               shouldBlink && "animate-blink"
             )}
             style={{ left: `${input.length === 0 ? 0 : caretPosition}ch` }}

@@ -86,7 +86,8 @@ body {
   }
 
   .terminal-scrollbar::-webkit-scrollbar-thumb {
-    @apply rounded-md border-[3px] border-solid border-transparent bg-gray-500/[.2] bg-clip-content;
+  @apply rounded-md border-[3px] border-solid border-transparent bg-clip-content;
+  background-color: rgba(168, 159, 124, 0.18);
   }
 }
 .tech-stack {

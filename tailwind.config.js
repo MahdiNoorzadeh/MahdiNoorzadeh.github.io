@@ -9,6 +9,37 @@ export default {
       },
 
       colors: {
+        // Worn Steel palette
+        "terminal-text-muted": "#8A857C",
+        "terminal-black": "#141312",
+        "terminal-gray-dark": "#141312",
+        "terminal-border": "#3A3835",
+        "terminal-gray": "#C8C4BC",
+        "terminal-white": "#C8C4BC",
+
+        "terminal-red": "#6B3A3A",
+        "terminal-red-dark": "#553030",
+
+        "terminal-pink": "#6B3A3A",
+        "terminal-pink-dark": "#553030",
+
+        "terminal-yellow": "#A89F7C",
+        "terminal-yellow-dark": "#8C7A4A",
+
+        "terminal-green": "#A89F7C",
+        "terminal-green-dark": "#8C7A4A",
+
+        "terminal-cyan": "#C8C4BC",
+        "terminal-cyan-dark": "#8A857C",
+        "terminal-cursor": "#8C7A4A",
+
+        "terminal-blue": "#C8C4BC",
+        "terminal-blue-dark": "#8A857C",
+        "terminal-blue-bg": "#3A3835",
+
+        "terminal-purple": "#8A857C",
+
+        // Explicit Worn Steel tokens
         "worn-bg": "#1C1B1A",
         "worn-terminal": "#141312",
         "worn-text": "#C8C4BC",
@@ -16,33 +47,6 @@ export default {
         "worn-accent": "#A89F7C",
         "worn-burgundy": "#6B3A3A",
         "worn-cursor": "#8C7A4A",
-        "terminal-text-muted": "#8C8C8C",
-        "terminal-black": "#1F2229",
-        "terminal-gray-dark": "#13141a",
-        "terminal-border": "#272a34",
-        "terminal-gray": "#E6E6E6",
-        "terminal-white": "#FFFFFF",
-
-        "terminal-red": "#B32025",
-        "terminal-red-dark": "#8F1D24",
-
-        "terminal-pink": "#D71655",
-        "terminal-pink-dark": "#BF2E5D",
-
-        "terminal-yellow": "#FF8A18",
-        "terminal-yellow-dark": "#FEA44C",
-
-        "terminal-green": "#47D4B9",
-        "terminal-green-dark": "#5EBDAB",
-
-        "terminal-cyan": "#05A1F7",
-        "terminal-cyan-dark": "#49AEE6",
-
-        "terminal-blue": "#277FFF",
-        "terminal-blue-dark": "#367BF0",
-        "terminal-blue-bg": "#2471f3",
-
-        "terminal-purple": "#8C42AB",
       },
 
       fontFamily: {
