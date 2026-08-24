@@ -229,6 +229,21 @@ const EXPERIENCE = `
 </div>
 `;
 
+const EDUCATION = `
+<div class="portfolio-section">
+
+  <div class="portfolio-item">
+    <div class="portfolio-title">
+      Associate Degree in Computer Engineering — Software
+    </div>
+    <div class="portfolio-meta">
+      Imam Khomeini Technical and Vocational College
+    </div>
+  </div>
+
+</div>
+`;
+
 const NEOFETCH = `
 <div class="neofetch">
 
@@ -296,6 +311,7 @@ const COMMANDS: Record<
   techstack: () => TECH_STACK,
   projects: () => PROJECTS,
   experience: () => EXPERIENCE,
+  education: () => EDUCATION,
   neofetch: () => NEOFETCH,
   contact: () => CONTACT,
   about: (username) => `Hello, ${username}!
