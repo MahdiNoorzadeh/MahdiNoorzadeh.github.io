@@ -36,7 +36,7 @@ projects, experience, technologies, and visual style.
 
 ```sh
 # 1. Clone the repository
-git clone https://github.com/MahdiNoorzadeh/TerminalPortfolio.github.io.git
+git clone https://github.com/MahdiNoorzadeh/MahdiNoorzadeh.github.io.git
 
 # 2. Enter the project directory
 cd TerminalPortfolio.github.io

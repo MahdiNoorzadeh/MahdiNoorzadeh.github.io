@@ -317,7 +317,7 @@ const COMMANDS: Record<
   date: () => new Date().toLocaleDateString(),
   github: () => openLink("https://github.com/MahdiNoorzadeh"),
   linkedin: () => "My LinkedIn is currently unavailable.",
-  repo: () => openLink("https://github.com/MahdiNoorzadeh/TerminalPortfolio.github.io"),
+  repo: () => openLink("https://github.com/MahdiNoorzadeh/MahdiNoorzadeh.github.io"),
   email: () => `Here's my email address.<br/><br/>${openLink("mailto:mahdinoorzadeh1@gmail.com")}`,
   cat: () =>
     `Here's a cute cat for you! 🐱<br/><br/>${openLink("https://cataas.com/cat/cute")}`,

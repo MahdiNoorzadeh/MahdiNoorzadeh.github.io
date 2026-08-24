@@ -9,7 +9,7 @@ If you find a bug, broken link, or other issue, feel free to open an issue with 
 To run the project locally:
 
 ```sh
-git clone https://github.com/MahdiNoorzadeh/TerminalPortfolio.github.io.git
+git clone https://github.com/MahdiNoorzadeh/MahdiNoorzadeh.github.io.git
 cd TerminalPortfolio.github.io
 npm install
 npm run dev
