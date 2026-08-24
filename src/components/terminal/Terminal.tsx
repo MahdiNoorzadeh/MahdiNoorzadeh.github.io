@@ -16,7 +16,7 @@ const Terminal = () => {
         font-jetbrains-mono
         text-sm
         shadow-terminal
-        md:rounded-md
+        rounded-md
       "
     >
       <TerminalHeader />
