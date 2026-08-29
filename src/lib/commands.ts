@@ -306,6 +306,29 @@ const CONTACT = `
 </div>
 `;
 
+const RESUME = `
+<div class="portfolio-section">
+
+  <div class="portfolio-item">
+    <div class="portfolio-title">Resume</div>
+
+    <div class="portfolio-description">
+      Download my latest resume.
+    </div>
+
+    <div class="portfolio-description">
+      <a
+        href="/Mahdi-Noorzadeh-Resume.pdf"
+        download="Mahdi-Noorzadeh-Resume.pdf"
+      >
+        Download Resume
+      </a>
+    </div>
+  </div>
+
+</div>
+`;
+
 const COMMANDS: Record<
   string,
   (username: string, args: string[], history: string[]) => string
@@ -319,6 +342,10 @@ const COMMANDS: Record<
   linkedin: () => "My LinkedIn is currently unavailable.",
   repo: () => openLink("https://github.com/MahdiNoorzadeh/MahdiNoorzadeh.github.io"),
   email: () => `Here's my email address.<br/><br/>${openLink("mailto:mahdinoorzadeh1@gmail.com")}`,
+  resume: () => {
+  downloadResume();
+  return RESUME;
+  },
   cat: () =>
     `Here's a cute cat for you! 🐱<br/><br/>${openLink("https://cataas.com/cat/cute")}`,
   techstack: () => TECH_STACK,
@@ -372,4 +399,15 @@ function openLink(url: string) {
   setTimeout(() => window.open(url, "_blank")?.focus(), 1000);
 
   return `Redirecting to <a href="${url}" target="_blank" rel="noreferrer noopener">${url}</a>...`;
+}
+
+function downloadResume() {
+  const link = document.createElement("a");
+
+  link.href = "/Mahdi-Noorzadeh-Resume.pdf";
+  link.download = "Mahdi-Noorzadeh-Resume.pdf";
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
