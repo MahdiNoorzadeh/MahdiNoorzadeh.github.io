@@ -31,10 +31,10 @@ interface UsernameContextProviderProps extends PropsWithChildren {}
 const UsernameContextProvider: FC<UsernameContextProviderProps> = ({
   children,
 }) => {
-  const [username, setUsername] = useLocalStorage("username", "mahdi");
+  const [username, setUsername] = useLocalStorage("username", "user");
 
   function handleUsernameChange(possibleUsername?: string | null) {
-    const newUsername = possibleUsername || "mahdi";
+    const newUsername = possibleUsername || "user";
     setUsername(newUsername);
   }
 
